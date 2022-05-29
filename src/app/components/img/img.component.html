@@ -1,0 +1,16 @@
+<div class="container">
+    <!-- 
+    <h3>{{counter}}</h3>
+    <h3>{{counterSetTimeOut}}</h3>
+    -->
+    <img [src]="image" alt="flag"
+     *ngIf="image; else elseImg"
+     (error)="imageError()"
+     (load)="imageLoaded()" 
+     >
+    <ng-template #elseImg>
+        <img  
+        [src]="imageDefault" alt="flag"
+        >
+    </ng-template>
+</div>
