@@ -1,3 +1,4 @@
+import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../../services/store.service';
 import { Product } from '../../models/product.model';
@@ -8,52 +9,29 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  private myShoppingCar: Product[] = [];
 
-  constructor(private storeService: StoreService) {
+  myShoppingCar: Product[] = [];
+  total: number = 0;
+  products: Product[] = [];
+  today = new Date();
+  date = new Date(2021,5,19);
+
+  constructor(
+    private storeService: StoreService,
+    private productService: ProductsService
+    ) {
     this.myShoppingCar = this.storeService.getMyShoppingCar();
   }
 
-  ngOnInit(): void { }
-
-  total: number = 0;
-  products: Product[] = [
-    {
-      id: '1',
-      name: 'EL mejor juguete',
-      price: 565,
-      image: 'https://source.unsplash.com/random',
-    },
-    {
-      id: '2',
-      name: 'Bicicleta casi nueva',
-      price: 356,
-      image: 'https://source.unsplash.com/random',
-    },
-    {
-      id: '3',
-      name: 'Colleción de albumnes',
-      price: 34,
-      image: 'https://source.unsplash.com/random',
-    },
-    {
-      id: '4',
-      name: 'Mis libros',
-      price: 23,
-      image: 'https://source.unsplash.com/random',
-    },
-    {
-      id: '5',
-      name: 'Otras cosas',
-      price: 500,
-      image: 'https://source.unsplash.com/random',
-    },
-  ];
+  ngOnInit(): void { 
+    this.productService.getAllProducts()
+    .subscribe(data => {
+      this.products = data;
+    });
+  }
 
   onAddToShopping(product: Product) {
     this.storeService.onAddToShopping(product);
     this.total = this.storeService.getTotalShopping();
-
-    console.log(this.total);
   }
 }

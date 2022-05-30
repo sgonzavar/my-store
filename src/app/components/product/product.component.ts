@@ -11,9 +11,11 @@ export class ProductComponent implements OnInit {
   //ANGULAR SIEMPRE DEBE TENER UN ESTADO INICIAL
   @Input() product: Product = {
     id: '',
+    title: '',
     price: 0,
+    description: '',
+    category: '',
     image: '',
-    name: ''
   }
 
   @Output() addProduct = new EventEmitter<Product>();
