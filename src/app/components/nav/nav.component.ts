@@ -1,3 +1,4 @@
+import { StoreService } from './../../services/store.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 
   activeMenu: boolean = false;
+  counter: number = 0;
 
-  constructor() { }
+  constructor(
+    private storeService: StoreService
+  ) { }
 
   ngOnInit(): void {
+    this.storeService.myCar$.subscribe (products => {
+      this.counter = products.length;
+    })
   }
 
   toogleModal() {
