@@ -1,7 +1,7 @@
 import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../../services/store.service';
-import { Product, CreateProductDTO } from '../../models/product.model';
+import { Product, CreateProductDTO , UpdateProductDTO } from '../../models/product.model';
 
 @Component({
   selector: 'app-products',
@@ -52,7 +52,6 @@ export class ProductsComponent implements OnInit {
   }
 
   onShowDetail(id: string) {
-    console.log("id",id);
     this.productService.getProduct(id)
     .subscribe(data => {
       this.toggleProductDetal(); // activa el toggle
@@ -70,8 +69,30 @@ export class ProductsComponent implements OnInit {
     }
     this.productService.createProduct(prod)
     .subscribe(data => {
-      console.log('create', data);
       this.products.unshift(data);
+    });
+  }
+
+  UpdateProduct(){
+    const update = {
+      title: 'new title this shit'
+    }
+    const id = this.productChoosen.id;
+    this.productService.updateProduct(id,update)
+    .subscribe(data => {
+      console.log('update', data);
+      const proIndex = this.products.findIndex(item => item.id === this.productChoosen.id);
+      this.products[proIndex] = data;
+    });
+  }
+
+  deleteProduct(){
+    const id = this.productChoosen.id;
+    this.productService.deleteProduct(id)
+    .subscribe(() => {
+      const proIndex = this.products.findIndex(item => item.id === this.productChoosen.id);
+      this.products.splice(proIndex, 1);
+      this.showProductDetail = false;
     });
   }
 
