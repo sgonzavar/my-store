@@ -14,7 +14,7 @@ export class AppComponent {
 
 
   onLoaded(image: string){
-    console.log('loaded padre', image);
+    // console.log('loaded padre', image);
   }
 
   onSize(size: number){

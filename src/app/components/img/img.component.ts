@@ -16,7 +16,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   @Input('image') 
   set changeImage(newImage: string){
     this.image = newImage;
-    console.log('change image', this.image);
+    // console.log('change image', this.image);
   }
 
   imageDefault: string = './assets/image/default.png';
@@ -27,14 +27,14 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   constructor() { 
     //BEFORE RENDER 
     //NO ASYNC -- ONCE TIME
-    console.log('constructor', 'imageValue => ', this.image);
+    // console.log('constructor', 'imageValue => ', this.image);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     //BEFORE - DURING RENDER
-    //CHANGES INPUTS -- MULTIPLES TIMES
-    console.log('ngOnChanges', 'imageValue =>', this.image);
-    console.log(changes);
+    // //CHANGES INPUTS -- MULTIPLES TIMES
+    // console.log('ngOnChanges', 'imageValue =>', this.image);
+    // console.log(changes);
   }
 
   ngOnInit(): void {
@@ -54,11 +54,11 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   ngAfterViewInit(): void {
     //AFTER RENDER
     //HANDLER CHILDREN -- ONCE TIME
-    console.log('ngAfterViewInit', 'imageValue =>', this.image);
+    // console.log('ngAfterViewInit', 'imageValue =>', this.image);
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
+    // console.log('ngOnDestroy');
     // window.clearInterval(this.counterF);
     // window.clearTimeout(this.counterSetTimeOut);
   }
@@ -68,7 +68,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   }
 
   imageLoaded() {
-    console.log("loaded hijo");
+    // console.log("loaded hijo");
     this.loaded.emit(this.image); // envio de info
     // this.size.emit(this.image.length);  
   }

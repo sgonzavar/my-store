@@ -1,5 +1,5 @@
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from './../../models/product.model';
-import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product',
@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-
 
   //ANGULAR SIEMPRE DEBE TENER UN ESTADO INICIAL
   @Input() product: Product = {
@@ -17,9 +16,15 @@ export class ProductComponent implements OnInit {
     name: ''
   }
 
+  @Output() addProduct = new EventEmitter<Product>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onAddToCar(){
+    this.addProduct.emit(this.product)
   }
 
 }

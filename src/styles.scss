@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+@import url(./styles/reset.scss);
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;    
+}
+
+.products-grid {
+    .container {
+        img {
+            border-radius: 10px;
+        }
+    }
 }
