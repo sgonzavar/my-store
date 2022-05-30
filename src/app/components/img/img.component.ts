@@ -33,14 +33,14 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   ngOnChanges(changes: SimpleChanges): void {
     //BEFORE - DURING RENDER
     // //CHANGES INPUTS -- MULTIPLES TIMES
-    console.log('ngOnChanges', 'imageValue =>', this.image);
+    // console.log('ngOnChanges', 'imageValue =>', this.image);
     // console.log(changes);
   }
 
   ngOnInit(): void {
     //BEFORE  RENDER
     //ASYNC - FETCH -- ONCE TIME
-    console.log('ngOnInit', 'imageValue =>', this.image);
+    // console.log('ngOnInit', 'imageValue =>', this.image);
     // this.counterF = window.setInterval(() => {
     //   this.counter += 1;
     //   console.log('run counter');
@@ -54,11 +54,11 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   ngAfterViewInit(): void {
     //AFTER RENDER
     //HANDLER CHILDREN -- ONCE TIME
-    console.log('ngAfterViewInit', 'imageValue =>', this.image);
+    // console.log('ngAfterViewInit', 'imageValue =>', this.image);
   }
 
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
+    // console.log('ngOnDestroy');
     // window.clearInterval(this.counterF);
     // window.clearTimeout(this.counterSetTimeOut);
   }

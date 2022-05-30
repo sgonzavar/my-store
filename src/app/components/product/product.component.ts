@@ -14,16 +14,24 @@ export class ProductComponent   {
     title: '',
     price: 0,
     description: '',
-    category: '',
-    image: '',
+    category: {
+      id: '',
+      name: '',
+    },
+    images: [],
   }
 
   @Output() addProduct = new EventEmitter<Product>();
+  @Output() showProduct = new EventEmitter<string>();
 
   constructor() { }
 
   onAddToCar(){
     this.addProduct.emit(this.product)
+  }
+
+  onShowDetail() {
+    this.showProduct.emit(this.product.id);
   }
 
 }
